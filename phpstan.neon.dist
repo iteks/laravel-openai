@@ -1,0 +1,20 @@
+#includes:
+#    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src/
+
+    excludePaths:
+    #    - ./*/*/FileToBeExcluded.php
+        - tests/
+        - vendor/
+
+    # Level 9 is the highest level. See: https://phpstan.org/user-guide/rule-levels
+    level: 8
+
+    ignoreErrors:
+        # Ignore vague type hints:
+        - # Deprecated config option `checkMissingIterableValueType` see https://phpstan.org/config-reference#vague-typehints / https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type.
+            identifier: missingType.iterableValue
