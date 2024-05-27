@@ -1,0 +1,69 @@
+{
+    "name": "iteks/laravel-openai",
+    "description": "A powerful package that seamlessly integrates OpenAI's advanced AI capabilities into your Laravel applications. This package offers quick setup and intuitive configuration to leverage AI models for chat, embeddings, and more.",
+    "type": "library",
+    "keywords": ["laravel","php", "openai", "ai", "api", "gpt", "data", "http", "client"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeramy Hing",
+            "email": "iteks@msn.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.8",
+        "laravel/framework": "^9.46|^10.10|^11.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-arch": "^2.7",
+        "phpstan/phpstan": "^1.10",
+        "symfony/var-dumper": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Iteks\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "pint:lint": "pint -v --test",
+        "pint:fix": "pint -v",
+        "phpstan": [
+            "phpstan analyse --ansi"
+        ],
+        "test": "pest --colors=always",
+        "test:all": [
+            "@pint:lint",
+            "@phpstan",
+            "@test"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Iteks\\Providers\\OpenAiServiceProvider"
+            ],
+            "aliases": {
+                "OpenAi": "Iteks\\Support\\Facades\\OpenAi"
+            }
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
