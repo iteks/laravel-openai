@@ -6,7 +6,9 @@
 <a href="https://packagist.org/packages/iteks/laravel-openai"><img src="https://img.shields.io/packagist/l/iteks/laravel-openai" alt="License"></a>
 </p>
 
-**Laravel OpenAI** is a powerful and user-friendly package designed to seamlessly integrate OpenAI's advanced AI capabilities into your Laravel applications. This package simplifies interaction with the OpenAI API, offering an elegant interface to quickly leverage various AI models for chat, embeddings, and more. With intuitive configuration through environment variables and smooth integration via a dedicated Laravel service provider, **Laravel OpenAI** ensures you can get started with OpenAI endpoints swiftly and efficiently. Enhance your Laravel applications by harnessing the power of OpenAI's AI models with this versatile and easy-to-use client. This is an unofficial, community-maintained package. Offered by <a href="https://github.com/iteks/">iteks</a>, Developed by <a href="https://github.com/jeramyhing/">jeramyhing</a>.
+**Laravel OpenAI** is a powerful and user-friendly package designed to seamlessly integrate OpenAI's advanced AI capabilities into your Laravel applications. This package simplifies interaction with the OpenAI API, offering an elegant interface to quickly leverage various AI models for chat, embeddings, and more. With intuitive configuration through environment variables and smooth integration via a dedicated Laravel service provider, **Laravel OpenAI** ensures you can get started with OpenAI endpoints swiftly and efficiently. Enhance your Laravel applications by harnessing the power of OpenAI's AI models with this versatile and easy-to-use client.
+
+A community-maintained package, Offered by <a href="https://github.com/iteks/">iteks</a>, Developed by <a href="https://github.com/jeramyhing/">jeramyhing</a>.
 
 ## Get Started
 
