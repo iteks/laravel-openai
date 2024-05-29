@@ -29,6 +29,12 @@ OPENAI_ORGANIZATION=
 
 ## Usage
 
+Include the OpenAi facade.
+
+```php
+use Iteks\Support\Facades\OpenAi;
+```
+
 For API calls, required parameters should be passed directly to the Facade methods without wrapping them in an array. Optional parameters can be included as an associative array at the end. Each method's documentation includes a link to the official API reference for further details.
 
 ```php
