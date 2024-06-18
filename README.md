@@ -20,11 +20,17 @@ Install **Laravel OpenAI** via the <a href="https://getcomposer.org/" target="_b
 composer require iteks/laravel-openai
 ```
 
-Set your OpenAI API key and other configurations in your `.env` file:
+Set your OpenAI API key and base URI in your .env file. These configurations are required:
 
 ```env
 OPENAI_API_KEY=
-OPENAI_ORGANIZATION=
+OPENAI_BASE_URI=
+```
+
+To explore additional optional configurations, publish the package configuration file using the following command:
+
+```sh
+php artisan vendor:publish --provider="Iteks\Providers\OpenAiServiceProvider" --tag=config
 ```
 
 ## Usage
