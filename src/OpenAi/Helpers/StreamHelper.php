@@ -19,6 +19,8 @@ class StreamHelper
         $rawChunks = explode('data: ', $response->body());
         $chunks = [];
 
+        // Log::info('Processing response stream:', ['rawChunks' => $rawChunks]); // Debugging
+
         foreach ($rawChunks as $rawChunk) {
             $chunk = trim($rawChunk);
 
@@ -27,20 +29,39 @@ class StreamHelper
             }
 
             if (! empty($chunk)) {
-                $decodedChunk = json_decode($chunk, true);
+                // Separate event from data
+                if (strpos($chunk, 'event:') !== false) {
+                    $eventData = explode("\n", $chunk);
 
-                if (json_last_error() !== JSON_ERROR_NONE) {
-                    $errorMessage = 'JSON decoding error: ' . json_last_error_msg();
+                    foreach ($eventData as $data) {
+                        $data = trim($data);
 
-                    Log::error($errorMessage);
-
-                    throw new RuntimeException($errorMessage);
+                        if (strpos($data, 'data:') === 0) {
+                            $data = substr($data, 5);
+                            $chunks[] = self::decodeChunk($data);
+                        }
+                    }
+                } else {
+                    $chunks[] = self::decodeChunk($chunk);
                 }
-
-                $chunks[] = $decodedChunk;
             }
         }
 
         return $chunks;
+    }
+
+    private static function decodeChunk(string $chunk): array
+    {
+        $decodedChunk = json_decode($chunk, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $errorMessage = 'JSON decoding error: ' . json_last_error_msg();
+
+            Log::error($errorMessage, ['chunk' => $chunk]);
+
+            throw new RuntimeException($errorMessage);
+        }
+
+        return $decodedChunk;
     }
 }
