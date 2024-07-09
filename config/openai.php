@@ -26,26 +26,7 @@ return [
     |
     */
 
-    'api_key' => env('OPENAI_API_KEY'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | OpenAI Project ID
-    |--------------------------------------------------------------------------
-    |
-    | The project ID used to specify which project is accessed for an API request.
-    | This is optional and is mainly used if you belong to multiple organizations
-    | or are using legacy user API keys. The project ID ensures the usage is counted
-    | against the specified project.
-    |
-    | Include the project ID in the OpenAI-Project HTTP header:
-    | OpenAI-Project: PROJECT_ID
-    |
-    | Set this value in your environment file.
-    |
-    */
-
-    'project_id' => env('OPENAI_PROJECT_ID'),
+    'api_key' => env('OPENAI_API_KEY', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -68,18 +49,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Request Timeout
+    | OpenAI Project ID
     |--------------------------------------------------------------------------
     |
-    | The maximum amount of time (in seconds) to wait for a response from the
-    | OpenAI API. This value should be set in your environment file. If not set,
-    | the default value will be 60 seconds.
+    | The project ID used to specify which project is accessed for an API request.
+    | This is optional and is mainly used if you belong to multiple organizations
+    | or are using legacy user API keys. The project ID ensures the usage is counted
+    | against the specified project.
+    |
+    | Include the project ID in the OpenAI-Project HTTP header:
+    | OpenAI-Project: PROJECT_ID
     |
     | Set this value in your environment file.
     |
     */
 
-    'request_timeout' => env('OPENAI_REQUEST_TIMEOUT', 60),
+    'project_id' => env('OPENAI_PROJECT_ID'),
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +82,22 @@ return [
     |
     */
 
-    'base_uri' => env('OPENAI_BASE_URI'),
+    'base_uri' => env('OPENAI_BASE_URI', 'https://api.openai.com/v1'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Request Timeout
+    |--------------------------------------------------------------------------
+    |
+    | The maximum amount of time (in seconds) to wait for a response from the
+    | OpenAI API. This value should be set in your environment file. If not set,
+    | the default value will be 60 seconds.
+    |
+    | Set this value in your environment file.
+    |
+    */
+
+    'request_timeout' => env('OPENAI_REQUEST_TIMEOUT', 60),
 
     /*
     |--------------------------------------------------------------------------
