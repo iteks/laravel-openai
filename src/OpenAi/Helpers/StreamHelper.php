@@ -15,35 +15,46 @@ class StreamHelper
      */
     public static function processStream(Response $response): array
     {
-        // Split the response by "data: " to handle each event.
-        $rawChunks = explode('data: ', $response->body());
+        // Log::info('Raw data response:', ['response' => $response->body()]); // Debugging
+
+        // Split the response by lines to handle each event and data pair as chunks
+        $lines = explode("\n", $response->body());
         $chunks = [];
+        $currentChunk = [];
 
-        // Log::info('Processing response stream:', ['rawChunks' => $rawChunks]); // Debugging
+        foreach ($lines as $line) {
+            $line = trim($line);
 
-        foreach ($rawChunks as $rawChunk) {
-            $chunk = trim($rawChunk);
+            if ($line === '') {
+                // Empty line indicates the end of a streamed chunk
+                if (! empty($currentChunk)) {
+                    $chunks[] = $currentChunk;
+                    $currentChunk = [];
+                }
 
-            if ($chunk === '[DONE]') {
-                break;
+                continue;
             }
 
-            if (! empty($chunk)) {
-                // Separate event from data
-                if (strpos($chunk, 'event:') !== false) {
-                    $eventData = explode("\n", $chunk);
-
-                    foreach ($eventData as $data) {
-                        $data = trim($data);
-
-                        if (strpos($data, 'data:') === 0) {
-                            $data = substr($data, 5);
-                            $chunks[] = self::decodeChunk($data);
-                        }
-                    }
-                } else {
-                    $chunks[] = self::decodeChunk($chunk);
+            if (strpos($line, 'event:') === 0) {
+                $currentChunk['event'] = trim(substr($line, 6));
+            } elseif (strpos($line, 'data:') === 0) {
+                if (! isset($currentChunk['data'])) {
+                    $currentChunk['data'] = '';
                 }
+
+                $currentChunk['data'] .= substr($line, 5);
+            }
+        }
+
+        // Add the last chunk if it exists
+        if (! empty($currentChunk)) {
+            $chunks[] = $currentChunk;
+        }
+
+        // Decode each chunk's data part
+        foreach ($chunks as &$chunk) {
+            if (isset($chunk['data'])) {
+                $chunk['data'] = self::decodeChunk($chunk['data']);
             }
         }
 
@@ -52,7 +63,13 @@ class StreamHelper
 
     private static function decodeChunk(string $chunk): array
     {
-        $decodedChunk = json_decode($chunk, true);
+        $chunk = trim($chunk);
+
+        if ($chunk === '[DONE]') {
+            return [];
+        }
+
+        $decoded = json_decode($chunk, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             $errorMessage = 'JSON decoding error: ' . json_last_error_msg();
@@ -62,6 +79,8 @@ class StreamHelper
             throw new RuntimeException($errorMessage);
         }
 
-        return $decodedChunk;
+        // Log::info('Decoded chunk', ['decoded' => $decoded]); // Debugging
+
+        return $decoded;
     }
 }
