@@ -14,7 +14,7 @@ use Iteks\OpenAi\Contracts\Http\ApiClientInterface;
  */
 class Batch implements BatchInterface
 {
-    private const ENDPOINT = 'batch/jobs';
+    private const ENDPOINT = 'batches';
 
     public function __construct(
         private readonly ApiClientInterface $client,
