@@ -63,9 +63,9 @@ class ApiClient implements ApiClientInterface
     {
         switch ($response->status()) {
             case 401:
-                throw new AuthenticationException();
+                throw new AuthenticationException;
             case 429:
-                throw new RateLimitException();
+                throw new RateLimitException;
             default:
                 throw new RequestException('OpenAI API request failed: ' . $response->body(), $response->status());
         }
