@@ -43,7 +43,7 @@ class Runs implements RunsInterface
         $response = $this->client->request('post', $endpoint, $options);
 
         // If the response is not streamed, return the JSON response as an array.
-        if ($response->getHeaderLine('Content-Type') === 'application/json') {
+        if ($response->header('Content-Type') === 'application/json') {
             return $response->json();
         }
 
@@ -72,7 +72,7 @@ class Runs implements RunsInterface
         $response = $this->client->request('post', $endpoint, $options);
 
         // If the response is not streamed, return the JSON response as an array.
-        if ($response->getHeaderLine('Content-Type') === 'application/json') {
+        if ($response->header('Content-Type') === 'application/json') {
             return $response->json();
         }
 
@@ -163,7 +163,7 @@ class Runs implements RunsInterface
         $response = $this->client->request('post', $endpoint, $options);
 
         // If the response is not streamed, return the JSON response as an array.
-        if ($response->getHeaderLine('Content-Type') === 'application/json') {
+        if ($response->header('Content-Type') === 'application/json') {
             return $response->json();
         }
 
