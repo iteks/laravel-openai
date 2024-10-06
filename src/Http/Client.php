@@ -14,8 +14,7 @@ class Client implements ClientInterface
 {
     public function __construct(
         private readonly string $apiKey,
-    ) {
-    }
+    ) {}
 
     public function request(string $method, string $uri, array $data = [], array $attachments = [], array $headers = []): Response
     {

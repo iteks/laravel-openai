@@ -18,8 +18,7 @@ class Moderations implements ModerationsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Classifies if text is potentially harmful.

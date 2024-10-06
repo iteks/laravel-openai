@@ -18,8 +18,7 @@ class Files implements FilesInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.

@@ -18,8 +18,7 @@ class Models implements ModelsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Lists the currently available models, and provides basic information about each one such as the owner and availability.

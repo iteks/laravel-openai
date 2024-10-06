@@ -18,8 +18,7 @@ class Assistants implements AssistantsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Create an assistant with a model and instructions.

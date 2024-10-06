@@ -18,8 +18,7 @@ class Batch implements BatchInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Creates and executes a batch from an uploaded file of requests.

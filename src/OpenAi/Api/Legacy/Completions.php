@@ -19,8 +19,7 @@ class Completions implements CompletionsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Creates a completion for the provided prompt and parameters.

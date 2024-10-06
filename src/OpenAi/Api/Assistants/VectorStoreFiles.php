@@ -18,8 +18,7 @@ class VectorStoreFiles implements VectorStoreFilesInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Create a vector store file by attaching a File to a vector store.

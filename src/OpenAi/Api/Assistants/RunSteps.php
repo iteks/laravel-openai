@@ -18,8 +18,7 @@ class RunSteps implements RunStepsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Returns a list of run steps belonging to a run.

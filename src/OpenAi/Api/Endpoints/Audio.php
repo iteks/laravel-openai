@@ -19,8 +19,7 @@ class Audio implements AudioInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Generates audio from the input text.

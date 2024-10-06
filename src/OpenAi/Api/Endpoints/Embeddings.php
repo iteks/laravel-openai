@@ -18,8 +18,7 @@ class Embeddings implements EmbeddingsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Creates an embedding vector representing the input text.

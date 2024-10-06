@@ -19,8 +19,7 @@ class Chat implements ChatInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Creates a model response for the given chat conversation.

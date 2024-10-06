@@ -19,8 +19,7 @@ class Runs implements RunsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Create a run.

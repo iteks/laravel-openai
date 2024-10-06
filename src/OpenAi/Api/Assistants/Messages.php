@@ -18,8 +18,7 @@ class Messages implements MessagesInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Create a message.

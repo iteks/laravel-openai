@@ -18,8 +18,7 @@ class VectorStoreFileBatches implements VectorStoreFileBatchesInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Create a vector store file batch.

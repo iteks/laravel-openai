@@ -18,8 +18,7 @@ class Threads implements ThreadsInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Create a thread.

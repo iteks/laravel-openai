@@ -18,8 +18,7 @@ class FineTuning implements FineTuningInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Creates a fine-tuning job which begins the process of creating a new model from a given dataset.

@@ -18,8 +18,7 @@ class Images implements ImagesInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Creates an image given a prompt.

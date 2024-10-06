@@ -18,8 +18,7 @@ class VectorStores implements VectorStoresInterface
 
     public function __construct(
         private readonly ApiClientInterface $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Create a vector store.
